@@ -1,7 +1,8 @@
 # makohippo.com
 
 Studio home page: the makohippo logo, the slogan and a link to each game's site.
-Plain HTML (`index.html`, styles inline), nothing to build.
+Plain HTML (`index.html`, styles inline), nothing to build. The live background is CSS colour blobs plus
+`pond.js` (ripples on a canvas: on their own, trailing the pointer, splashing on click/tap; off with reduced motion).
 
 This is the root GitHub Pages site of the `MathCatsMathCats` account. The custom domain is set here,
 so every project site is served under it: `makohippo.com/MakoCatsMath/`, `/ChromaticDrift/`, `/ThrowAPlate/`
@@ -13,4 +14,4 @@ Keep these files:
 - `robots.txt`: crawlers only read it at the domain root, so it lists every site's sitemap.
 - `.nojekyll`: serve the files as they are.
 
-Images: `img/logo-*.webp` come from `Website/Logo/Logo.png`; the game icons are the apps' 1024 px icons.
+Images: `img/logo-*.webp` are `Website/Logo/Logo.png` with its cream background made transparent; the game icons are the apps' 1024 px icons.
