@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://makohippo.com/sitemap.xml
+Sitemap: https://makohippo.com/MakoCatsMath/sitemap.xml
+Sitemap: https://makohippo.com/ChromaticDrift/sitemap.xml
+Sitemap: https://makohippo.com/ThrowAPlate/sitemap.xml

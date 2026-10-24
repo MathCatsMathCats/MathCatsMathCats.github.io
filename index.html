@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>makohippo – Little games. Big splash.</title>
+<meta name="description" content="makohippo makes small, friendly games for iPhone, iPad and Android: Mako Cats Math, Chromatic Drift and Throw a Plate at the Wall!!!">
+<link rel="canonical" href="https://makohippo.com/">
+<meta name="color-scheme" content="light">
+<meta name="theme-color" content="#FAF8F3">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="makohippo">
+<meta property="og:title" content="makohippo – Little games. Big splash.">
+<meta property="og:description" content="Small, friendly games for iPhone, iPad and Android.">
+<meta property="og:url" content="https://makohippo.com/">
+<meta property="og:image" content="https://makohippo.com/og-image.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/png" href="/favicon.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Organization","name":"makohippo","url":"https://makohippo.com/","logo":"https://makohippo.com/img/logo-720.webp"}
+</script>
+<style>
+  :root {
+    --bg: #FAF8F3;       /* the logo's own background, so the logo needs no cut-out */
+    --ink: #1F2D4A;      /* wordmark */
+    --hippo: #3A3E67;
+    --water: #3F9BD3;
+    --muted: #6E7290;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { background: var(--bg); }
+  body {
+    min-height: 100vh;
+    min-height: 100dvh;
+    display: flex;
+    flex-direction: column;
+    gap: clamp(12px, 3vh, 36px);
+    padding: max(env(safe-area-inset-top), clamp(14px, 3.5vh, 40px)) clamp(16px, 4vw, 56px)
+             max(env(safe-area-inset-bottom), clamp(10px, 2vh, 22px));
+    background: var(--bg);
+    color: var(--ink);
+    font-family: ui-rounded, "SF Pro Rounded", "Arial Rounded MT Bold", "Nunito", system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* Slogan on the left, logo top right */
+  header { display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+  .slogan {
+    font-size: clamp(30px, min(6.2vw, 8.5vh), 84px);
+    font-weight: 800;
+    line-height: 1.02;
+    letter-spacing: -0.02em;
+  }
+  .slogan span { display: block; color: var(--water); }
+  h1 { flex: none; line-height: 0; }
+  h1 img { height: clamp(80px, min(22vh, 24vw), 230px); width: auto; }
+
+  /* The three games */
+  main { flex: 1; min-height: 0; display: flex; }
+  .games {
+    flex: 1;
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: clamp(12px, 2.4vw, 32px);
+  }
+  .game {
+    position: relative;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: clamp(10px, 2.4vh, 24px);
+    padding: clamp(16px, 3vh, 36px) 16px;
+    border-radius: clamp(22px, 3.2vmin, 40px);
+    color: #fff;
+    text-align: center;
+    text-decoration: none;
+    box-shadow: 0 18px 40px -22px rgba(31, 45, 74, .6);
+    transition: transform .25s cubic-bezier(.3, 1.4, .5, 1), box-shadow .25s;
+  }
+  .game img {
+    width: min(64%, 32vh);
+    height: auto;
+    border-radius: 22.5%;
+    box-shadow: 0 14px 28px -10px rgba(0, 0, 0, .45);
+    transition: transform .3s cubic-bezier(.3, 1.6, .5, 1);
+  }
+  .game strong { display: block; font-size: clamp(19px, min(2.3vw, 3.6vh), 32px); font-weight: 800; line-height: 1.1; }
+  .game small { display: block; margin-top: .35em; font-size: clamp(14px, min(1.35vw, 2.3vh), 19px); opacity: .85; }
+  .go {
+    position: absolute; right: clamp(14px, 2vw, 24px); top: clamp(12px, 2vh, 22px);
+    font-size: clamp(18px, 2.6vh, 26px); font-weight: 800; opacity: .5;
+    transition: transform .25s, opacity .25s;
+  }
+  .game:hover, .game:focus-visible { transform: translateY(-6px); box-shadow: 0 26px 46px -22px rgba(31, 45, 74, .7); }
+  .game:hover img, .game:focus-visible img { transform: rotate(-5deg) scale(1.05); }
+  .game:hover .go, .game:focus-visible .go { transform: translateX(4px); opacity: 1; }
+  .game:focus-visible { outline: 4px solid var(--water); outline-offset: 4px; }
+
+  .mako   { background: linear-gradient(165deg, #C9ECFF, #8FD0FC); color: var(--ink); }
+  .chroma { background: radial-gradient(circle at 30% 20%, #5A2A4C, #1E0F1C 75%); }
+  .plate  { background: linear-gradient(165deg, #3A66E6, #1E44B8); }
+
+  footer { text-align: center; font-size: 13px; color: var(--muted); }
+  footer a { color: inherit; text-underline-offset: 3px; }
+  footer a:hover { color: var(--ink); }
+
+  /* Phones and tablets held upright: games stacked as rows */
+  @media (max-width: 1100px) and (orientation: portrait) {
+    .slogan { font-size: clamp(24px, min(7.8vw, 6vh), 48px); white-space: nowrap; }
+    h1 img { height: clamp(60px, min(13vh, 26vw), 150px); }
+    .games { grid-template-columns: 1fr; grid-template-rows: repeat(3, 1fr); }
+    .game { flex-direction: row; justify-content: flex-start; gap: 16px; padding: 12px 44px 12px 14px; text-align: left; }
+    .game img { width: auto; height: clamp(60px, min(15vh, 28vw), 140px); }
+    .game strong { font-size: clamp(18px, 5.4vw, 30px); }
+    .game small { font-size: clamp(13px, 3.8vw, 19px); }
+    .go { top: 50%; margin-top: -.6em; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .game, .game img, .go { transition: none; }
+    .game:hover, .game:focus-visible, .game:hover img, .game:focus-visible img { transform: none; }
+  }
+</style>
+</head>
+<body>
+<header>
+  <p class="slogan">Little games.<span>Big splash.</span></p>
+  <h1><img src="/img/logo-720.webp" srcset="/img/logo-360.webp 360w, /img/logo-720.webp 720w" sizes="320px" width="780" height="572" alt="makohippo"></h1>
+</header>
+
+<main>
+  <ul class="games" aria-label="Our games">
+    <li><a class="game mako" href="/MakoCatsMath/">
+      <img src="/img/mako-cats-math.webp" width="384" height="384" alt="">
+      <span><strong>Mako Cats Math</strong><small>Math practice with cute cats</small></span>
+      <span class="go" aria-hidden="true">→</span>
+    </a></li>
+    <li><a class="game chroma" href="/ChromaticDrift/">
+      <img src="/img/chromatic-drift.webp" width="384" height="384" alt="">
+      <span><strong>Chromatic Drift</strong><small>A puzzle of color rules</small></span>
+      <span class="go" aria-hidden="true">→</span>
+    </a></li>
+    <li><a class="game plate" href="/ThrowAPlate/">
+      <img src="/img/throw-a-plate.webp" width="384" height="384" alt="">
+      <span><strong>Throw a Plate at the Wall!!!</strong><small>Had a day? Smash it.</small></span>
+      <span class="go" aria-hidden="true">→</span>
+    </a></li>
+  </ul>
+</main>
+
+<footer><a href="/MakoCatsMath/impressum/">Impressum</a> · <a href="/MakoCatsMath/privacy/">Privacy</a></footer>
+</body>
+</html>
