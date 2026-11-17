@@ -154,3 +154,15 @@ details p { margin: 0 0 10px; }
 .foot a:hover { text-decoration: underline; }
 
 @media (prefers-reduced-motion: reduce) { .btn { transition: none; } .rail { scroll-behavior: auto; } }
+
+/* a real photo (not a screenshot): the scale, framed like the screenshots */
+.photo { border: 1.5px solid var(--ink); width: 100%; }
+
+/* research cards: the big number first */
+.studies b { display: block; margin: 0 0 8px; font-size: clamp(32px, 4vw, 44px); font-weight: 200; line-height: 1; letter-spacing: -.02em; }
+.studies p + p { margin-top: 10px; }
+.studies .src { font-size: 13px; }
+
+/* the privacy section stands out: inverted */
+.privacy { background: var(--ink); color: var(--paper); }
+.privacy .ticks, .privacy .ticks li { border-color: var(--paper); }
