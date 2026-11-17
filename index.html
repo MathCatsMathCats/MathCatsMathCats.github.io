@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>makohippo – Little games. Big splash.</title>
-<meta name="description" content="makohippo makes small, friendly games for iPhone, iPad and Android: Mako Cats Math, Chromatic Drift and Throw a Plate at the Wall!!!">
+<meta name="description" content="makohippo makes small, friendly games and apps for iPhone, iPad and Android: Mako Cats Math, Chromatic Drift, Throw a Plate at the Wall!!! and, soon, Taskamento.">
 <link rel="canonical" href="https://makohippo.com/">
 <meta name="color-scheme" content="light">
 <meta name="theme-color" content="#FAF8F3">
@@ -79,13 +79,13 @@
   h1 { flex: none; line-height: 0; }
   h1 img { height: clamp(80px, min(22vh, 24vw), 230px); width: auto; }
 
-  /* The three games */
+  /* The games, plus Taskamento (not out yet, so a card without a link) */
   main { flex: 1; min-height: 0; display: flex; }
   .games {
     flex: 1;
     list-style: none;
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(4, 1fr);
     gap: clamp(12px, 2.4vw, 32px);
   }
   .game {
@@ -126,6 +126,15 @@
   .mako   { background: linear-gradient(165deg, #C9ECFF, #8FD0FC); color: var(--ink); }
   .chroma { background: radial-gradient(circle at 30% 20%, #5A2A4C, #1E0F1C 75%); }
   .plate  { background: linear-gradient(165deg, #3A66E6, #1E44B8); }
+  .taska  { background: #000; }   /* the app itself is only black and white */
+  .taska img { border-radius: 22.5%; box-shadow: 0 0 0 2px #fff; }
+  .taska:hover, .taska:hover img { transform: none; box-shadow: 0 18px 40px -22px rgba(31, 45, 74, .6); }
+  .taska:hover img { box-shadow: 0 0 0 2px #fff; }
+  .soon {
+    position: absolute; right: clamp(12px, 1.6vw, 20px); top: clamp(12px, 2vh, 20px);
+    padding: 4px 9px; border: 1.5px solid #fff; border-radius: 999px;
+    font-size: clamp(11px, 1.4vh, 13px); font-weight: 800; letter-spacing: .06em; text-transform: uppercase;
+  }
 
   footer { display: flex; align-items: center; justify-content: center; gap: 18px; font-size: 13px; color: var(--muted); }
   footer a { color: inherit; text-underline-offset: 3px; }
@@ -149,12 +158,20 @@
   @media (max-width: 1100px) and (orientation: portrait) {
     .slogan { font-size: clamp(24px, min(7.8vw, 6vh), 48px); white-space: nowrap; }
     h1 img { height: clamp(60px, min(13vh, 26vw), 150px); }
-    .games { grid-template-columns: 1fr; grid-template-rows: repeat(3, 1fr); }
-    .game { flex-direction: row; justify-content: flex-start; gap: 16px; padding: 12px 44px 12px 14px; text-align: left; }
-    .game img { width: auto; height: clamp(60px, min(15vh, 28vw), 140px); }
+    .games { grid-template-columns: 1fr; grid-template-rows: repeat(4, 1fr); }
+    .games { gap: clamp(10px, 1.8vh, 24px); }
+    .game { flex-direction: row; justify-content: flex-start; gap: 14px; padding: 8px 44px 8px 12px; text-align: left; min-height: 0; }
+    .game img { width: auto; height: clamp(52px, min(11.5vh, 24vw), 140px); }
     .game strong { font-size: clamp(18px, 5.4vw, 30px); }
     .game small { font-size: clamp(13px, 3.8vw, 19px); }
     .go { top: 50%; margin-top: -.6em; }
+    .soon { display: none; }   /* the card text already says it */
+  }
+
+  /* Phones held sideways: no room for the badge, and a little less padding */
+  @media (max-height: 560px) and (orientation: landscape) {
+    .soon { display: none; }
+    .game { padding: 10px 12px; gap: 8px; }
   }
 
   @media (prefers-reduced-motion: reduce) {
@@ -174,7 +191,7 @@
 </header>
 
 <main>
-  <ul class="games" aria-label="Our games">
+  <ul class="games" aria-label="Our games and apps">
     <li><a class="game mako" href="/MakoCatsMath/">
       <img src="/img/mako-cats-math.webp" width="384" height="384" alt="">
       <span><strong>Mako Cats Math</strong><small>Math practice with cute cats</small></span>
@@ -190,6 +207,11 @@
       <span><strong>Throw a Plate at the Wall!!!</strong><small>Had a day? Smash it.</small></span>
       <span class="go" aria-hidden="true">→</span>
     </a></li>
+    <li><div class="game taska">
+      <img src="/img/taskamento.webp" width="384" height="384" alt="">
+      <span><strong>Taskamento</strong><small>A black-and-white weight log. Soon on iOS and Android.</small></span>
+      <span class="soon">Soon</span>
+    </div></li>
   </ul>
 </main>
 
