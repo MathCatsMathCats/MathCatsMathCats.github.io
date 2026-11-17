@@ -79,7 +79,7 @@
   h1 { flex: none; line-height: 0; }
   h1 img { height: clamp(80px, min(22vh, 24vw), 230px); width: auto; }
 
-  /* The games, plus Taskamento (not out yet, so a card without a link) */
+  /* The games, plus Taskamento (not in the stores yet: it has a "Soon" badge) */
   main { flex: 1; min-height: 0; display: flex; }
   .games {
     flex: 1;
@@ -128,8 +128,7 @@
   .plate  { background: linear-gradient(165deg, #3A66E6, #1E44B8); }
   .taska  { background: #000; }   /* the app itself is only black and white */
   .taska img { border-radius: 22.5%; box-shadow: 0 0 0 2px #fff; }
-  .taska:hover, .taska:hover img { transform: none; box-shadow: 0 18px 40px -22px rgba(31, 45, 74, .6); }
-  .taska:hover img { box-shadow: 0 0 0 2px #fff; }
+  .taska:hover img, .taska:focus-visible img { box-shadow: 0 0 0 2px #fff; }
   .soon {
     position: absolute; right: clamp(12px, 1.6vw, 20px); top: clamp(12px, 2vh, 20px);
     padding: 4px 9px; border: 1.5px solid #fff; border-radius: 999px;
@@ -207,11 +206,11 @@
       <span><strong>Throw a Plate at the Wall!!!</strong><small>Had a day? Smash it.</small></span>
       <span class="go" aria-hidden="true">→</span>
     </a></li>
-    <li><div class="game taska">
+    <li><a class="game taska" href="/taskamento/">
       <img src="/img/taskamento.webp" width="384" height="384" alt="">
       <span><strong>Taskamento</strong><small>A black-and-white weight log. Soon on iOS and Android.</small></span>
       <span class="soon">Soon</span>
-    </div></li>
+    </a></li>
   </ul>
 </main>
 

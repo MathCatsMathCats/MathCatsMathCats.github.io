@@ -1,0 +1,156 @@
+/*
+  TASKAMENTO – one stylesheet for every page.
+  Like the app: only black and white, thin big numbers, small spaced capitals for labels.
+  The page follows the phone's light/dark setting, as the app's "Auto" does.
+  Buttons flash inverted when tapped, as in the app.
+*/
+:root {
+  --ink: #000;
+  --paper: #fff;
+  --font: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  color-scheme: light dark;
+}
+@media (prefers-color-scheme: dark) {
+  :root { --ink: #fff; --paper: #000; }
+}
+
+* { box-sizing: border-box; }
+html { background: var(--paper); -webkit-text-size-adjust: 100%; }
+body { margin: 0; background: var(--paper); color: var(--ink); font: 17px/1.55 var(--font); -webkit-font-smoothing: antialiased; }
+img { max-width: 100%; height: auto; display: block; }
+a { color: inherit; text-underline-offset: 3px; text-decoration-thickness: 1px; }
+:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; }
+.wrap { width: min(1120px, 100% - 32px); margin: 0 auto; }
+.skip { position: absolute; left: -999px; top: 8px; padding: 8px 12px; background: var(--ink); color: var(--paper); z-index: 10; }
+.skip:focus { left: 8px; }
+
+/* small spaced capitals, like "LAST · 14 NOV" in the app */
+.label { margin: 0 0 10px; font-size: 12px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; }
+
+/* header */
+.top { border-bottom: 1px solid var(--ink); }
+.top .wrap { display: flex; align-items: center; justify-content: space-between; gap: 12px; min-height: 64px; }
+.brand { display: flex; align-items: center; gap: 10px; text-decoration: none; font-weight: 700; font-size: 18px; }
+.brand img { width: 36px; height: 36px; flex: none; border: 1px solid var(--ink); background: #fff; }
+.top nav { display: flex; align-items: center; gap: 2px; }
+.top nav a { padding: 10px 10px; text-decoration: none; font-size: 15px; font-weight: 600; white-space: nowrap; }
+.top nav a:hover { text-decoration: underline; }
+.top nav a.lang { border: 1px solid var(--ink); padding: 6px 9px; margin-left: 4px; font-size: 13px; letter-spacing: .06em; }
+.top nav a.studio { display: grid; place-items: center; width: 44px; height: 44px; margin-left: 8px; padding: 0; border-radius: 50%; background: #FAF8F3; border: 1px solid var(--ink); }
+.top nav a.studio img { width: 34px; height: 34px; }
+@media (max-width: 560px) {
+  .brand span { display: none; }
+  .top nav a { padding: 10px 7px; font-size: 14px; }
+  .top nav .wide { display: none; }
+}
+
+/* hero */
+.hero { padding: clamp(36px, 7vw, 88px) 0 clamp(40px, 7vw, 80px); border-bottom: 1px solid var(--ink); }
+.hero .wrap { display: grid; grid-template-columns: 1.05fr 1fr; gap: clamp(28px, 5vw, 64px); align-items: center; }
+.hero h1 { margin: 0; font-size: clamp(54px, 9.5vw, 112px); font-weight: 200; line-height: .95; letter-spacing: -.035em; }
+.hero .sub { margin: 18px 0 0; font-size: clamp(21px, 2.6vw, 28px); font-weight: 300; line-height: 1.25; }
+.hero .lead { margin: 18px 0 0; max-width: 34em; }
+.stores { display: flex; flex-wrap: wrap; gap: 10px; margin: 28px 0 0; padding: 0; list-style: none; }
+.stores li { display: inline-flex; align-items: center; gap: 10px; min-height: 52px; padding: 0 18px 0 14px; border: 1.5px solid var(--ink); }
+.stores svg { width: 24px; height: 24px; flex: none; }
+.stores span { display: flex; flex-direction: column; line-height: 1.1; font-size: 17px; font-weight: 700; }
+.stores small { font-size: 11px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; }
+.facts { display: flex; flex-wrap: wrap; gap: 4px 0; margin: 22px 0 0; padding: 0; list-style: none; font-size: 14px; }
+.facts li:not(:last-child)::after { content: "·"; margin: 0 10px; }
+
+/* phones: a white and a black screen side by side, as the app can be either */
+.pair { position: relative; display: grid; grid-template-columns: 1fr 1fr; gap: clamp(12px, 2vw, 22px); max-width: 520px; justify-self: center; }
+.pair img:last-child { margin-top: 12%; }
+.shot { border: 1.5px solid var(--ink); border-radius: clamp(18px, 3vw, 30px); background: #fff; overflow: hidden; }
+@media (max-width: 860px) {
+  .hero .wrap { grid-template-columns: 1fr; }
+  .pair { max-width: 420px; width: 100%; }
+}
+
+/* sections */
+.band { padding: clamp(48px, 8vw, 96px) 0; border-bottom: 1px solid var(--ink); }
+.band h2 { margin: 0 0 14px; font-size: clamp(34px, 5vw, 56px); font-weight: 200; line-height: 1.05; letter-spacing: -.025em; }
+.band .intro { margin: 0 0 8px; max-width: 38em; font-size: 19px; }
+.split { display: grid; grid-template-columns: 1fr minmax(220px, 340px); gap: clamp(28px, 6vw, 80px); align-items: center; }
+.split.flip { grid-template-columns: minmax(220px, 340px) 1fr; }
+.split.flip > .shot { order: -1; }
+@media (max-width: 760px) {
+  .split, .split.flip { grid-template-columns: 1fr; }
+  .split > .shot, .split.flip > .shot { order: 0; max-width: 300px; justify-self: center; }
+}
+.ticks { margin: 22px 0 0; padding: 0; list-style: none; border-top: 1px solid var(--ink); }
+.ticks li { position: relative; padding: 12px 0 12px 30px; border-bottom: 1px solid var(--ink); }
+.ticks li::before { content: "✓"; position: absolute; left: 2px; top: 12px; font-weight: 700; }
+
+/* the "four numbers" row, like START / LOWEST / BMI / STREAK in the app */
+.nums { display: grid; grid-template-columns: repeat(4, 1fr); margin: 30px 0 0; padding: 0; list-style: none; border-top: 1px solid var(--ink); border-bottom: 1px solid var(--ink); }
+.nums li { padding: 14px 14px 16px; border-left: 1px solid var(--ink); }
+.nums li:first-child { border-left: 0; padding-left: 0; }
+.nums b { display: block; font-size: clamp(30px, 4.4vw, 48px); font-weight: 200; line-height: 1; letter-spacing: -.02em; }
+.nums small { display: block; margin-top: 8px; font-size: 12px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; }
+@media (max-width: 600px) {
+  .nums { grid-template-columns: 1fr 1fr; }
+  .nums li:nth-child(3) { border-left: 0; padding-left: 0; }
+  .nums li:nth-child(n+3) { border-top: 1px solid var(--ink); }
+}
+
+/* grid of small feature boxes */
+.grid { display: grid; grid-template-columns: repeat(3, 1fr); margin: 30px 0 0; padding: 0; list-style: none; border-top: 1px solid var(--ink); border-left: 1px solid var(--ink); }
+.grid li { padding: 20px; border-right: 1px solid var(--ink); border-bottom: 1px solid var(--ink); }
+.grid h3 { margin: 0 0 6px; font-size: 12px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; }
+.grid p { margin: 0; }
+@media (max-width: 860px) { .grid { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 560px) { .grid { grid-template-columns: 1fr; } }
+
+/* all screens in a row you can scroll sideways */
+.rail { display: grid; grid-auto-flow: column; grid-auto-columns: clamp(170px, 22vw, 240px); gap: 16px; margin: 30px 0 0; padding: 0 0 16px; list-style: none; overflow-x: auto; scroll-snap-type: x mandatory; overscroll-behavior-x: contain; }
+.rail li { scroll-snap-align: start; }
+.rail figcaption { margin-top: 8px; font-size: 12px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; }
+
+/* the price, framed like the app's unlock screen */
+.price { margin: 30px 0 0; padding: 22px; border: 1.5px solid var(--ink); max-width: 640px; }
+.price p { margin: 0 0 8px; }
+.price p:last-child { margin: 0; }
+
+.note { margin: 26px 0 0; max-width: 42em; font-size: 15px; }
+
+/* closing */
+.end { padding: clamp(56px, 9vw, 104px) 0; text-align: center; background: var(--ink); color: var(--paper); }
+.end h2 { margin: 0; font-size: clamp(40px, 7vw, 80px); font-weight: 200; letter-spacing: -.03em; line-height: 1; }
+.end p { margin: 16px auto 0; max-width: 34em; }
+.end .stores { justify-content: center; }
+.end .stores li { border-color: var(--paper); }
+
+/* buttons: invert for a moment when tapped, like the app */
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 48px; padding: 0 20px; border: 1.5px solid currentColor; font-weight: 700; text-decoration: none; transition: background .13s, color .13s; }
+.btn:hover { text-decoration: underline; }
+.btn:active { background: var(--ink); color: var(--paper); }
+.end .btn:active { background: var(--paper); color: var(--ink); }
+.btn svg { width: 20px; height: 20px; }
+
+/* text pages: support */
+.page { padding: clamp(36px, 6vw, 72px) 0 clamp(48px, 8vw, 96px); }
+.page .wrap { max-width: 760px; }
+.page h1 { margin: 0 0 12px; font-size: clamp(44px, 7vw, 72px); font-weight: 200; letter-spacing: -.03em; line-height: 1; }
+.page h2 { margin: 44px 0 10px; padding-top: 16px; border-top: 1px solid var(--ink); font-size: 13px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; }
+.page p, .page li { max-width: 40em; }
+.page ol, .page ul { padding-left: 22px; }
+.page li { margin-bottom: 6px; }
+details { border-bottom: 1px solid var(--ink); }
+details:first-of-type { border-top: 1px solid var(--ink); }
+summary { padding: 14px 28px 14px 0; position: relative; cursor: pointer; font-weight: 700; list-style: none; }
+summary::-webkit-details-marker { display: none; }
+summary::after { content: "+"; position: absolute; right: 4px; top: 10px; font-size: 22px; font-weight: 300; }
+details[open] summary::after { content: "–"; }
+details > div { padding: 0 0 14px; }
+details p { margin: 0 0 10px; }
+
+/* footer */
+.foot { padding: 28px 0 36px; font-size: 14px; }
+.foot .wrap { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 10px 24px; }
+.foot p { margin: 0; }
+.foot nav { display: flex; flex-wrap: wrap; gap: 6px 18px; }
+.foot a { text-decoration: none; }
+.foot a:hover { text-decoration: underline; }
+
+@media (prefers-reduced-motion: reduce) { .btn { transition: none; } .rail { scroll-behavior: auto; } }
