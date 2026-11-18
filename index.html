@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>makohippo – Little games. Big splash.</title>
-<meta name="description" content="makohippo makes small, friendly games and apps for iPhone, iPad and Android: Mako Cats Math, Chromatic Drift, Throw a Plate at the Wall!!! and, soon, Taskamento.">
+<meta name="description" content="makohippo makes small, friendly games and apps for iPhone, iPad and Android: Mako Cats Math, Chromatic Drift, Throw a Plate at the Wall!!! and, soon, Taskamento and Low Tide.">
 <link rel="canonical" href="https://makohippo.com/">
 <meta name="color-scheme" content="light">
 <meta name="theme-color" content="#FAF8F3">
@@ -79,14 +79,14 @@
   h1 { flex: none; line-height: 0; }
   h1 img { height: clamp(80px, min(22vh, 24vw), 230px); width: auto; }
 
-  /* The games, plus Taskamento (not in the stores yet: it has a "Soon" badge) */
+  /* The games, plus Taskamento and Low Tide (not in the stores yet: they have a "Soon" badge) */
   main { flex: 1; min-height: 0; display: flex; }
   .games {
     flex: 1;
     list-style: none;
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: clamp(12px, 2.4vw, 32px);
+    grid-template-columns: repeat(5, 1fr);
+    gap: clamp(10px, 2vw, 28px);
   }
   .game {
     position: relative;
@@ -129,6 +129,8 @@
   .taska  { background: #000; }   /* the app itself is only black and white */
   .taska img { border-radius: 22.5%; box-shadow: 0 0 0 2px #fff; }
   .taska:hover img, .taska:focus-visible img { box-shadow: 0 0 0 2px #fff; }
+  .tide   { background: radial-gradient(circle at 70% 15%, #2a3a3e, #101518 75%); color: #E3DDD1; }   /* the game's slate and brass */
+  .tide .soon { border-color: #C69853; color: #C69853; }
   .soon {
     position: absolute; right: clamp(12px, 1.6vw, 20px); top: clamp(12px, 2vh, 20px);
     padding: 4px 9px; border: 1.5px solid #fff; border-radius: 999px;
@@ -157,20 +159,34 @@
   @media (max-width: 1100px) and (orientation: portrait) {
     .slogan { font-size: clamp(24px, min(7.8vw, 6vh), 48px); white-space: nowrap; }
     h1 img { height: clamp(60px, min(13vh, 26vw), 150px); }
-    .games { grid-template-columns: 1fr; grid-template-rows: repeat(4, 1fr); }
+    .games { grid-template-columns: 1fr; grid-template-rows: repeat(5, 1fr); }
     .games { gap: clamp(10px, 1.8vh, 24px); }
     .game { flex-direction: row; justify-content: flex-start; gap: 14px; padding: 8px 44px 8px 12px; text-align: left; min-height: 0; }
-    .game img { width: auto; height: clamp(52px, min(11.5vh, 24vw), 140px); }
+    .game img { width: auto; height: clamp(44px, min(9.6vh, 22vw), 128px); }
     .game strong { font-size: clamp(18px, 5.4vw, 30px); }
     .game small { font-size: clamp(13px, 3.8vw, 19px); }
     .go { top: 50%; margin-top: -.6em; }
     .soon { display: none; }   /* the card text already says it */
   }
 
+  /* Small phones held upright (five cards): smaller logo, tighter rows, card text at most two lines */
+  @media (max-width: 1100px) and (orientation: portrait) and (max-height: 700px) {
+    body { gap: 8px; }
+    h1 img { height: clamp(48px, 11vh, 76px); }
+    .slogan { font-size: clamp(22px, min(7.4vw, 5.4vh), 36px); }
+    .games { gap: 8px; }
+    .game { padding: 6px 36px 6px 10px; gap: 10px; }
+    .game small { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+  }
+
   /* Phones held sideways: no room for the badge, and a little less padding */
   @media (max-height: 560px) and (orientation: landscape) {
+    body { gap: 10px; }
+    h1 img { height: clamp(60px, 19vh, 110px); }
     .soon { display: none; }
-    .game { padding: 10px 12px; gap: 8px; }
+    .game { padding: 10px 10px; gap: 8px; }
+    .game img { width: min(56%, 26vh); }
+    .game small { display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
   }
 
   @media (prefers-reduced-motion: reduce) {
@@ -209,6 +225,11 @@
     <li><a class="game taska" href="/taskamento/">
       <img src="/img/taskamento.webp" width="384" height="384" alt="">
       <span><strong>Taskamento</strong><small>A black-and-white weight log. Soon on iOS and Android.</small></span>
+      <span class="soon">Soon</span>
+    </a></li>
+    <li><a class="game tide" href="/lowtide/">
+      <img src="/img/lowtide.webp" width="256" height="256" alt="">
+      <span><strong>Low Tide</strong><small>The narrator lies. Soon on iOS and Android.</small></span>
       <span class="soon">Soon</span>
     </a></li>
   </ul>
