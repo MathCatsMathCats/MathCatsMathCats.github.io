@@ -166,3 +166,6 @@ details p { margin: 0 0 10px; }
 /* the privacy section stands out: inverted */
 .privacy { background: var(--ink); color: var(--paper); }
 .privacy .ticks, .privacy .ticks li { border-color: var(--paper); }
+
+/* text pages: small headings inside a section (privacy) */
+.page h3 { margin: 26px 0 6px; font-size: 18px; font-weight: 700; }
